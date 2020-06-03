@@ -8,13 +8,6 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 
-# @login_required
-# def index(request):
-#     html = "index.html"
-#     data = CustomUser.objects.all()
-#     return render(request, html, {"data": data, "auth_user": AUTH_USER_MODEL})
-
-
 def signup_view(request):
     html = "register.html"
 
