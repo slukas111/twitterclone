@@ -11,9 +11,12 @@
 
 from django.contrib import admin
 from django.urls import path
-from authentication import views 
+from authentication.views import * 
+from twitteruser.views import *
 
 urlpatterns = [
-    path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),
+    path("", index,  name="home"),
+    path("signup/", sign_up, name="signup"),
+    path("login/", log_in, name="login"),
+    path("logout/", log_out, name="logout"),
 ]

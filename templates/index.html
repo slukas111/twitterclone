@@ -1,0 +1,10 @@
+<h1> Twitter Clone </h1>
+{% if user.is_authenticated %}
+<p> username: {{request.user.username}} </p>
+<p> display_name: {{request.user.display_name}} </p>
+
+{% comment %} <h3>  hello: {{auth_user}} </h3> {% endcomment %}
+
+<p><a href="{% url 'logout' %}">logout</a></p> 
+
+{% endif %}

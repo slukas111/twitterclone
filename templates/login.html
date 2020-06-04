@@ -1,0 +1,14 @@
+
+
+<h1>Welcome, Please login: </h1>
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+  
+</form>
+
+<a href = {% url 'signup'%}> <button>SignUp</button></a>
+
+{% endblock content %}

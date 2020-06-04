@@ -7,8 +7,8 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 
-def signup_view(request):
-    html = "register.html"
+def sign_up(request):
+    html = "signup.html"
 
     if request.method == "POST":
         form = SignUpForm(request.POST)
@@ -32,7 +32,7 @@ def signup_view(request):
     return render(request, html, {"form": form})
 
 
-def login_view(request):
+def log_in(request):
     html = "login.html"
 
     if request.method == "POST":
@@ -52,6 +52,6 @@ def login_view(request):
     return render(request, html, {"form": form})
 
 
-def logout_view(request):
+def log_out(request):
     logout(request)
-    return HttpResponseRedirect(reverse("login"))
+    return (HttpResponseRedirect("/login/"))

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "notification.apps.NotificationConfig",
     "tweet.apps.TweetConfig",
     "twitteruser.apps.TwitteruserConfig",
+    
 ]
 
 MIDDLEWARE = [
