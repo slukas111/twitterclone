@@ -1,9 +1,8 @@
 from django.shortcuts import render, HttpResponseRedirect
-# from customuser.settings import AUTH_USER_MODEL
+from twitterclone.settings import AUTH_USER_MODEL
 from twitteruser.models import CustomUser
 from django.contrib.auth import authenticate, login, logout
 from .forms import *
-from twitteruser.forms import *
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
