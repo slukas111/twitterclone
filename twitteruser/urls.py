@@ -14,6 +14,7 @@ from django.urls import path
 from authentication.views import * 
 from twitteruser.views import *
 
+
 urlpatterns = [
     path("", index,  name="home"),
     path("signup/", sign_up, name="signup"),
