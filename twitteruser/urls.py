@@ -20,4 +20,5 @@ urlpatterns = [
     path("signup/", sign_up, name="signup"),
     path("login/", log_in, name="login"),
     path("logout/", log_out, name="logout"),
+    path('author_detail/<int:id>/', author_detail, name="author_detail")
 ]

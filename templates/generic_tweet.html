@@ -1,7 +1,14 @@
 <html>
 <title> generic tweet form </title>
-<form action= '' method='post'>
-{% csrf_token %}
-{{form.as_p}}
-<input type="submit"> 
-</form>
+
+{% if user.is_authenticated %}
+ {{ user.username }}!
+<a href="{% url 'home'%}"><button>Home🏠</button></a>
+<div class="add_tweet">
+    <form action= '' method='post'>
+        {% csrf_token %}
+        {{form.as_p}}
+    <input type="submit"> 
+    </form>
+</div>
+{% endif %}

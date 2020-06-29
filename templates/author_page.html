@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>author page</title>
+</head>
+<body>
+<a href="{% url 'home'%}"><button>Home🏠</button></a>
+<div>
+<p> User: {{author.username}}</p>
+<h3> This is {{author.username}} Tweets 🦜</h3>
+</div class="twitter_feed">
+
+<ul>    
+    {% for tweets in user_tweets%}
+    <li>
+    {% comment %} {{tweets}} {% endcomment %}
+ <a href = {%url 'tweet_view' id=tweets.id%}>{{tweets}}</a>
+
+    </li>
+    </div>
+    {% endfor %}
+</ul>
+</body>
+</html>

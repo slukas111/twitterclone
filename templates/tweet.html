@@ -1,19 +1,18 @@
 <html>
 <head>
-<title> Twitter Feed </title>
+<title> 🦉Tweet🦉 </title>
+<a href="{% url 'home'%}"><button>Home🏠</button></a>
 
 </head>
+<div class="tweet_feed">
 <body>
-    
-<p> User: {{tweet.author}}</p>
-<div>
-<p> Tweet: </p>
-
-{% for tweet in tweets %}
-{{tweet}}
-{% endfor %}
+<h2><a href="author_detail/{{data.author}}">{{data.author}}</a>
+<ul>
+    <p>tweet:{{data.tweet}}</p>
+    <p>date:{{data.post_time}}</p>
+</ul>
 </div>
-</body>
-
+{% comment %} url return: http://localhost:8000/tweet/8/author_detail/sasha
+http://localhost:8000/author_detail/5/ {% endcomment %}
 </body>
 </html>

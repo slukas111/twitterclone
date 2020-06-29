@@ -5,7 +5,7 @@ from tweet.views import *
 
 urlpatterns = [
     path('tweet/', tweets, name="tweet"),
-    path('tweetadd/', add_tweet, name='tweetadd'),
-    path('tweet/<int:id>', tweet_view, name='tweetview'),
+    path('generic_tweet/', add_tweet, name='add_tweet'),
+    path('tweet/<int:id>/', tweet_view, name='tweet_view'),
 
 ]
