@@ -4,7 +4,7 @@ from . import views
 from tweet.views import *
 
 urlpatterns = [
-    path('tweet/', tweets, name="tweet"),
+    path('', tweets, name="home"),
     path('generic_tweet/', add_tweet, name='add_tweet'),
     path('tweet/<int:id>/', tweet_view, name='tweet_view'),
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification</title>
+</head>
+<body>
+
+<a href="{% url 'home'%}"><button>Home🏠</button></a>
+<div class="notifcation_container">
+{% for notification in notify %}
+    {{notification}}
+    {% endfor %}
+</div>
+
+</body>
+</html>

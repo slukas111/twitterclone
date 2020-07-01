@@ -1,19 +1,22 @@
 <h1> Twitter Clone </h1>
+
+<div class="user-profile">
 {% if user.is_authenticated %}
-{% comment %} <p> username: <a href="author_detail/{{author=author.id%}}/">
-{{request.user.username}}</a> </p> {% endcomment %}
+<h4> Welcome, 
 <a href="author_detail/{{user.id}}">
-{{user.username}}</a>
+{{user.username}}</a></h4>
+<a href="{% url 'notification' %}"><button>Alert🔔</button></a>
+</div>
 <body>
-  <h3>Twitter-Feed</h3>
-<div class = 'notif-bar'> 
+  <h3>Home</h3>
+<div class = 'home-bar'> 
    <a href="{% url 'logout' %}"><button>Logout🔒</button></a>
    <a href="{% url 'add_tweet' %}"><button>Tweet🐦</button></a>
 </div>
 
 <div class= 'twitter-feed'>
 <ul>
-  {% for tweet in tweet_data%}
+  {% for tweet in tweets%}
     <div class = 'tweet-container'>
 
     <li>{{tweet}} by: <a href="author_detail/{{tweet.author.id}}/">{{tweet.author}}</a> @ {{tweet.post_time}}</li>

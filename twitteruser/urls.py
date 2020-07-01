@@ -16,9 +16,11 @@ from twitteruser.views import *
 
 
 urlpatterns = [
-    path("", index,  name="home"),
-    path("signup/", sign_up, name="signup"),
-    path("login/", log_in, name="login"),
-    path("logout/", log_out, name="logout"),
-    path('author_detail/<int:id>/', author_detail, name="author_detail")
+    # path("", index,  name="home"),
+    # path("signup/", sign_up, name="signup"),
+    # path("login/", log_in, name="login"),
+    # path("logout/", log_out, name="logout"),
+    path('author_detail/<int:id>/', author_detail, name="author_detail"),
+    path('follow/<int:id>/', follow, name="follow"),
+    path('unfollow/<int:id>/', unfollow, name="unfollow")
 ]

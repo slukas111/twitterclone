@@ -5,9 +5,24 @@
     <title>author page</title>
 </head>
 <body>
-<a href="{% url 'home'%}"><button>Home🏠</button></a>
+<a href="/"><button>Home🏠</button></a>
 <div>
 <p> User: {{author.username}}</p>
+<div class="counter">
+<h3><p>Followers: {{following_count}}</p>
+<p>Tweets: {{ tweet_count }}</p></h3>
+</div>
+
+<div class = 'follow-unfollow'>
+{{is_following}}
+{% if author in all_followers %}
+
+<a href = {% url 'unfollow' author.id%}><button>Following</button></a>
+{%else%}
+<a href = {% url 'follow' author.id%}><button>Follow</button></a>
+{%endif%}
+</div>
+
 <h3> This is {{author.username}} Tweets 🦜</h3>
 </div class="twitter_feed">
 
