@@ -4,7 +4,7 @@ from twitterclone.settings import AUTH_USER_MODEL
 from django.contrib.auth.decorators import login_required
 from tweet.models import Tweet
 
-
+@login_required
 def author_detail(request, id):
     html ="author_page.html"
     author = CustomUser.objects.get(id=id)

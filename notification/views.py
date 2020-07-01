@@ -8,5 +8,5 @@ def notification(request):
     user = request.user
     notify = Notification.objects.filter(contact_user=user)
     for notification in notify:
-        notification.save()
+        notification.delete()
     return render(request, html, { "notify": notify })

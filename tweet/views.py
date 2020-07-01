@@ -4,10 +4,10 @@ from twitteruser.models import CustomUser
 from .forms import TweetForm
 import re
 from notification.models import Notification
-
+from django.contrib.auth.decorators import login_required
 # Got help from chris on tweet
 
-
+@login_required
 def tweets(request):
     html = "index.html"
     ur_tweets = Tweet.objects.filter(author=request.user).order_by("-post_time")
@@ -17,7 +17,7 @@ def tweets(request):
 
     return render(request, html, {"tweets": tweets})
 
-# @login_required
+@login_required
 def add_tweet(request):
     form = TweetForm()
     if request.method == "POST":
