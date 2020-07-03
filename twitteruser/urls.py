@@ -13,14 +13,12 @@ from django.contrib import admin
 from django.urls import path
 from authentication.views import * 
 from twitteruser.views import *
+from . import views
 
 
 urlpatterns = [
-    # path("", index,  name="home"),
-    # path("signup/", sign_up, name="signup"),
-    # path("login/", log_in, name="login"),
-    # path("logout/", log_out, name="logout"),
+
     path('author_detail/<int:id>/', author_detail, name="author_detail"),
-    path('follow/<int:id>/', follow, name="follow"),
-    path('unfollow/<int:id>/', unfollow, name="unfollow")
+    path('follow/<int:id>/', Follow.as_view(), name="follow"),
+    path('unfollow/<int:id>/', Unfollow.as_view(), name="unfollow")
 ]
