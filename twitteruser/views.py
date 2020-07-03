@@ -3,6 +3,8 @@ from twitteruser.models import CustomUser
 from twitterclone.settings import AUTH_USER_MODEL
 from django.contrib.auth.decorators import login_required
 from tweet.models import Tweet
+from django.views import View
+from django.utils.decorators import method_decorator
 
 @login_required
 def author_detail(request, id):
@@ -20,23 +22,26 @@ def author_detail(request, id):
     "tweet_count": tweet_count,
     })
 
-@login_required
-def follow(request, id):
-    html= "author_page.html"
-    own_profile = request.user # or your queryset to get
-    following_profile = CustomUser.objects.get(id=id)
-    own_profile.following.add(following_profile)  # and .remove() for unfollow
-    own_profile.save()
-    # return render(request, html)
-    return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
+class Follow(View):
+    @method_decorator(login_required)
+    def get(self, request, id):
+        # html= "author_page.html"
+        own_profile = request.user # or your queryset to get
+        following_profile = CustomUser.objects.get(id=id)
+        own_profile.following.add(following_profile)  # and .remove() for unfollow
+        own_profile.save()
+        # return render(request, html)
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
 
-@login_required
-def unfollow(request, id):
-    html = "author_page.html"
-    own_profile = request.user  # or your queryset to get
-    following_profile = CustomUser.objects.get(id=id)
-    own_profile.following.remove(following_profile)  # and .remove() for unfollow
-    own_profile.save()
-    # return render(request, html)
-    #not pulling the correct id
-    return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
+class Unfollow(View):
+    @method_decorator(login_required)
+
+    def get(self, request, id):
+        # html = "author_page.html"
+        own_profile = request.user  # or your queryset to get
+        following_profile = CustomUser.objects.get(id=id)
+        own_profile.following.remove(following_profile)  # and .remove() for unfollow
+        own_profile.save()
+        # return render(request, html)
+        #not pulling the correct id
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))

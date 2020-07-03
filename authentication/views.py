@@ -6,13 +6,19 @@ from .forms import *
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.views.generic import View
 
+class SignUp(View):
+    def get(self,request):
+        html = "signup.html"
+        form = SignUpForm()
+        return render(request, html, {'form': form})
 
-def sign_up(request):
-    html = "signup.html"
-
-    if request.method == "POST":
+    def post(self, request):
+        html = "signup.html"
         form = SignUpForm(request.POST)
+        # if request.method == "POST":
+        #     form = SignUpForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
             newuser = CustomUser.objects.create(
@@ -27,10 +33,10 @@ def sign_up(request):
             )
             login(request, user)
 
-        return HttpResponseRedirect(reverse("home"))
-    else:
+            return HttpResponseRedirect(reverse("home"))
+        # else:
         form = SignUpForm()
-    return render(request, html, {"form": form})
+        return render(request, html, {"form": form})
 
 
 def log_in(request):

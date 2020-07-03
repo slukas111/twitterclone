@@ -3,19 +3,22 @@ from .models import Tweet
 from twitteruser.models import CustomUser
 from .forms import TweetForm
 import re
+from django.views.generic import View
 from notification.models import Notification
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators  import method_decorator
 # Got help from chris on tweet
 
-@login_required
-def tweets(request):
-    html = "index.html"
-    ur_tweets = Tweet.objects.filter(author=request.user).order_by("-post_time")
-    following_tweets = Tweet.objects.filter(author__in=request.user.following.all())
-    #https://www.dev2qa.com/what-does-double-underscore-__-means-in-django-model-queryset-objects-filter-method/
-    tweets = ur_tweets | following_tweets #query set
+class Tweets(View):
+    @method_decorator(login_required)
+    def get(self, request):
+        html = "index.html"
+        ur_tweets = Tweet.objects.filter(author=request.user).order_by("-post_time")
+        following_tweets = Tweet.objects.filter(author__in=request.user.following.all())
+        #https://www.dev2qa.com/what-does-double-underscore-__-means-in-django-model-queryset-objects-filter-method/
+        tweets = ur_tweets | following_tweets #query set
 
-    return render(request, html, {"tweets": tweets})
+        return render(request, html, {"tweets": tweets})
 
 @login_required
 def add_tweet(request):
